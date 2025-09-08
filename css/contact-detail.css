@@ -1,0 +1,29 @@
+/* Contact specific styles */
+
+.contact-detail 
+{
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.detail-field 
+{
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.field-label 
+{
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.field-value 
+{
+    color: #333;
+    font-size: 1.1rem;
+}

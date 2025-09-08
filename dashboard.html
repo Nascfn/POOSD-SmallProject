@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager App - Dashboard</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Contacts</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+            <button id="logout-btn" class="btn btn-secondary">Logout</button>
+        </div>
+        
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+                    <span id="user-name">User Name</span>
+                </div>
+                <input type="text" class="search-bar" id="search-contacts" placeholder="Search contacts...">
+                <a href="add-contact.html" class="btn">+ Add Contact</a>
+            </div>
+            
+            <div id="dashboard-alert"></div>
+            <div id="contacts-loading" class="loading hidden">Loading contacts...</div>
+            <div id="contacts-container" class="contacts-grid"></div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/contacts.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

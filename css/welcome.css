@@ -1,0 +1,22 @@
+/* Landing page specific styles */
+
+.welcome-screen 
+{
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.logo 
+{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.tagline 
+{
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}

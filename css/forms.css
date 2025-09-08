@@ -1,0 +1,45 @@
+/* Form specific styles */
+
+.form-container 
+{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.form-title 
+{
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.form-group 
+{
+    margin-bottom: 1.5rem;
+}
+
+.form-group label 
+{
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input 
+{
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus 
+{
+    outline: none;
+    border-color: #667eea;
+}

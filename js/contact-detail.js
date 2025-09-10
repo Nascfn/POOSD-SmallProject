@@ -45,13 +45,12 @@ function editThisContact() {
     window.location.href = `add-contact.html?id=${currentContactId}`;
 }
 
-// This logic now lives ONLY in this file
+
 function deleteThisContact(contactIdToDelete) {
     if (!confirm('Are you sure you want to delete this contact?')) return;
 
     try {
         const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
-        // Use a loose comparison here as well for safety
         const updatedContacts = contacts.filter(c => c.id != contactIdToDelete);
         localStorage.setItem('contacts', JSON.stringify(updatedContacts));
         window.location.href = 'dashboard.html';

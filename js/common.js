@@ -1,7 +1,7 @@
 // Some common utility functions used across pages
 
 // TO DO: API Configuration
-const API_BASE = '/api';
+const API_BASE = '/API';
 
 // Show alert messages
 function showAlert(containerId, message, type = 'error') 

@@ -1,10 +1,13 @@
+// Add contact function script
+console.log("DEV: add-contact.js script loaded!");
+
 let currentContactId = null;
 
 // Pass ID
 const urlParams = new URLSearchParams(window.location.search);
 const editId = urlParams.get('id');
 
-document.addEventListener('DOMContentLoaded', function () 
+document.addEventListener('DOMContentLoaded', function ()
 {
     // Load contact
     if (editId) {
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function ()
     });
 });
 
-function loadContactForEdit(contactId) 
+function loadContactForEdit(contactId)
 {
     currentContactId = contactId;
     const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
@@ -47,20 +50,47 @@ function loadContactForEdit(contactId)
 
 
 async function updateContact(contactId, contactData) {
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (!userData.id) {
+        showAlert('contact-alert', 'Authentication error.');
+        return;
+    }
+
+    const nameParts = contactData.name.split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ');
+
+    const payload = {
+        firstName: firstName,
+        lastName: lastName,
+        phone: contactData.phone,
+        email: contactData.email,
+        contactId: contactId,
+        userId: userData.id
+    };
+
+    // DEBUG: log the payload
+    console.log('Updating contact with payload:', JSON.stringify(payload, null, 2));
+
     try {
-        const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
-        const contactIndex = contacts.findIndex(c => c.id == contactId);
+        const response = await fetch(`${API_BASE}/EditContact.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
 
-        if (contactIndex !== -1) {
-            contacts[contactIndex] = { ...contacts[contactIndex], ...contactData };
-            localStorage.setItem('contacts', JSON.stringify(contacts));
+        const data = await response.json();
 
+        // DEBUG: log the response
+        console.log('Update contact API response:', JSON.stringify(data, null, 2));
+
+        if (data.error) {
+            showAlert('contact-alert', `Failed to update contact: ${data.error}`);
+        } else {
             showAlert('contact-alert', 'Contact updated successfully!', 'success');
             setTimeout(() => {
                 window.location.href = 'dashboard.html';
             }, 1500);
-        } else {
-            showAlert('contact-alert', 'Contact not found.');
         }
     } catch (error) {
         showAlert('contact-alert', 'Failed to update contact. Please try again.');

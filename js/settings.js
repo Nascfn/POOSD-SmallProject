@@ -1,3 +1,6 @@
+// Settings functionality script
+console.log("DEV: settings.js script loaded!");
+
 document.addEventListener('DOMContentLoaded', function() 
 {
     loadUserSettings();

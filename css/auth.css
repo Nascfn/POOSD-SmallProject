@@ -1,0 +1,7 @@
+.container {
+    min-height: auto;
+    max-height: none;
+    display: block;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.808);
+}

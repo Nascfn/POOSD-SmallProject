@@ -1,4 +1,5 @@
-// Log in script
+// Log in function script
+console.log("DEV: login.js script loaded!");
 
 document.addEventListener('DOMContentLoaded', function() 
 {

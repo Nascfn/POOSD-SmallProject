@@ -1,4 +1,5 @@
 // Some common utility functions used across pages
+console.log("DEV: common.js script loaded!");
 
 // TO DO: API Configuration
 const API_BASE = '/API';

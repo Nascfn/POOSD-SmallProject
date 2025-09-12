@@ -1,5 +1,12 @@
 /* Contact specific styles */
 
+.container {
+    min-height: auto;
+    max-height: none;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.808);
+}
+
 .contact-detail 
 {
     max-width: 500px;
@@ -26,4 +33,17 @@
 {
     color: #333;
     font-size: 1.1rem;
+}
+
+.back-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    
+    margin: 1rem 1.5rem;
+    display: inline-block;
+}
+
+.back-btn:hover 
+{
+    transform: translateY(-2px);
 }

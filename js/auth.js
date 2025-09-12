@@ -1,80 +1,93 @@
 // Authentication functions
+console.log("DEV: auth.js script loaded!");
 
 // Register
-async function register(name, email, password) {
+async function register(name, email, password) 
+{
+    // Get name
+    const nameParts = name.split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ');
+
+    const payload = {
+        firstName: firstName,
+        lastName: lastName,
+        login: email,
+        password: password
+    };
+
+    // DEBUG: testing the API call
+    console.log('Attempting to register with payload:', JSON.stringify(payload, null, 2));
+
     try {
-        // TO DO: Replace with an actual API call
-        // Simulating API call for demo...
-        const response = await fetch(`${API_BASE}/register.php`, 
+        const response = await fetch(`${API_BASE}/SignUp.php`,
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password
-            })
+            body: JSON.stringify(payload)
         });
 
         const data = await response.json();
-        
-        if (data.status === 'success') {
+
+        // DEBUG: log response
+        console.log('Registration API response:', JSON.stringify(data, null, 2));
+
+        if (data.error) {
+            showAlert('register-alert', data.error);
+        } else {
             showAlert('register-alert', 'Account created successfully! Please log in.', 'success');
             setTimeout(() => window.location.href = 'login.html', 2000);
-        } else {
-            showAlert('register-alert', data.message || 'Registration failed');
         }
     } catch (error) {
-        // TO DO: Remove this later
-        // DEMO: Simulate registration success
-        showAlert('register-alert', 'Account created successfully! Please log in.', 'success');
-        setTimeout(() => window.location.href = 'login.html', 2000);
-        console.log('Registration error:', error);
+        showAlert('register-alert', 'Registration failed. Please try again.');
+        console.error('Registration error:', error);
     }
 }
 
 // Login
-async function login(email, password) 
+async function login(email, password)
 {
+    const payload = {
+        login: email,
+        password: password
+    };
+
+    // DEBUG: testing the API call
+    console.log('Attempting to log in with payload:', JSON.stringify(payload, null, 2));
+
     try {
-        // TO DO: Replace with an actual API call
-        // Simulating API call for demo
-        const response = await fetch(`${API_BASE}/login.php`, 
+        const response = await fetch(`${API_BASE}/Login.php`,
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(
-            {
-                email: email,
-                password: password
-            })
+            body: JSON.stringify(payload)
         });
 
         const data = await response.json();
-        
-        if (data.status === 'success') 
-        {
-            localStorage.setItem('userData', JSON.stringify(data.userData));
-            window.location.href = 'dashboard.html';
+
+        // DEBUG: log response
+        console.log('Login API response:', JSON.stringify(data, null, 2));
+
+        if (data.error) {
+            showAlert('login-alert', data.error);
         } else {
-            showAlert('login-alert', data.message || 'Login failed');
+            const userData = {
+                id: data.id,
+                name: `${data.firstName} ${data.lastName}`.trim(),
+                firstName: data.firstName,
+                lastName: data.lastName,
+                email: email
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            window.location.href = 'dashboard.html';
         }
     } catch (error) {
-        // TO DO: Remove this later
-        // DEMO: simulate successful login
-        const userData = {
-            id: 1,
-            name: email.split('@')[0],
-            email: email,
-            token: 'demo_token_' + Date.now()
-        };
-        localStorage.setItem('userData', JSON.stringify(userData));
-        window.location.href = 'dashboard.html';
-        console.log('Login error:', error);
+        showAlert('login-alert', 'Login failed. Please try again.');
+        console.error('Login error:', error);
     }
 }
 

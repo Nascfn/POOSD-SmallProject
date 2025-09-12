@@ -1,5 +1,6 @@
 // Demo page functionality
 // To be deleted later? 
+console.log("DEV: demo.js script loaded!");
 
 // Demo login function
 function demoLogin() 

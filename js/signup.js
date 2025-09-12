@@ -1,4 +1,5 @@
-// Sign up script
+// Sign up function script
+console.log("DEV: signup.js script loaded!");
 
 document.addEventListener('DOMContentLoaded', function () 
 {

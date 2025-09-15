@@ -6,36 +6,28 @@
     <title>Contact Manager App - Settings</title>
     <link rel="icon" type="image/jpeg" href="media/logo-v1.png">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/form-cont.css">
 </head>
 <body>
-    <div class="container">
-        <a href="dashboard.html" class="btn back-btn">← Back</a>
+    <div class="containerSign">
         <div class="form-container">
-            <h2 class="form-title">Account Settings</h2>
-            <div id="settings-alert"></div>
-            <form id="settings-form">
-                <div class="form-group">
-                    <label for="settings-name">Full Name</label>
-                    <input type="text" id="settings-name" required>
+            <div class="signUp-container">
+                <div class="signUp-inner-container">
+                    <h2 class="lg-view">Account Settings</h2>
+                    <form id="settings-form">
+                        <p><small>* Required</small></p>
+                        <input for="settings-name" class="form-group" type="text" id="settings-name"  placeholder="Full Name *" required/>
+                        <input for="settings-email" type="email" id="settings-email" placeholder="Email *" required/>
+                        <input for="settings-current-password" type="password"  id="settings-current-password" placeholder="Password"/>
+                        <input for="settings-new-password" type="password"  id="settings-new-password" placeholder="New Password (optional)"/>
+                        <button type="submit" class="btn button-align-right">Submit</button>
+                    </form>
+                    <a href="dashboard.html" class="btn btn-secondary button-align-left">Back</a>
                 </div>
-                <div class="form-group">
-                    <label for="settings-email">Email</label>
-                    <input type="email" id="settings-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="settings-current-password">Current Password</label>
-                    <input type="password" id="settings-current-password">
-                </div>
-                <div class="form-group">
-                    <label for="settings-new-password">New Password (optional)</label>
-                    <input type="password" id="settings-new-password">
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Update Profile</button>
-            </form>
+            </div>
         </div>
     </div>
-
+    
     <script src="js/common.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/settings.js"></script>

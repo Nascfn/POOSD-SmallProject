@@ -6,34 +6,26 @@
     <title>Contact Manager App - Add Contact</title>
     <link rel="icon" type="image/jpeg" href="media/logo-v1.png">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/form-cont.css">
     <link rel="stylesheet" href="css/contact-detail.css">
 </head>
 <body>
-    <div class="container">
-        <a href="dashboard.html" class="btn back-btn">← Back</a>
+    <div class="containerSign">
         <div class="form-container">
-            <h2 class="form-title" id="contact-form-title">Add New Contact</h2>
-            <div id="contact-alert"></div>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="contact-name">Full Name</label>
-                    <input type="text" id="contact-name" required>
+            <div class="signUp-container">
+                <div class="signUp-inner-container">
+                    <h2 class="lg-view">Add New Contact</h2>
+                    <form id="contact-form">
+                        <p><small>* Required</small></p>
+                        <input class="form-group" for="contact-name" type="text" id="contact-name"  placeholder="Full Name *" required/>
+                        <input class="form-group" for="contact-email" type="email" id="contact-email" placeholder="Email *" required/>
+                        <input class="form-group" for="contact-phone" type="tel"  id="contact-phone" placeholder="Phone *" required/>
+                        <input class="form-group" for="contact-company" type="text"  id="contact-company" placeholder="Company"/>
+                        <button type="submit" class="btn button-align-right" id="contact-submit-btn">Submit</button>
+                    </form>
+                    <a href="dashboard.html" class="btn btn-secondary button-align-left">Back</a>
                 </div>
-                <div class="form-group">
-                    <label for="contact-email">Email</label>
-                    <input type="email" id="contact-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="contact-phone">Phone</label>
-                    <input type="tel" id="contact-phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="contact-company">Company</label>
-                    <input type="text" id="contact-company">
-                </div>
-                <button type="submit" class="btn" style="width: 100%;" id="contact-submit-btn">Add Contact</button>
-            </form>
+            </div>
         </div>
     </div>
 

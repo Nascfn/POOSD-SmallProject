@@ -2,7 +2,7 @@
 console.log("DEV: auth.js script loaded!");
 
 // Register
-async function register(name, email, password) 
+async function register(name, username, password) 
 {
     // Get name
     const nameParts = name.split(' ');
@@ -12,7 +12,7 @@ async function register(name, email, password)
     const payload = {
         firstName: firstName,
         lastName: lastName,
-        login: email,
+        login: username,
         password: password
     };
 
@@ -35,13 +35,13 @@ async function register(name, email, password)
         console.log('Registration API response:', JSON.stringify(data, null, 2));
 
         if (data.error) {
-            showAlert('register-alert', data.error);
+            alert('Registration error: ' + data.error);
         } else {
-            showAlert('register-alert', 'Account created successfully! Please log in.', 'success');
-            setTimeout(() => window.location.href = 'login.html', 2000);
+            alert('Account created successfully! Please log in.');
+            setTimeout(() => window.location.href = 'login.html', 500);
         }
     } catch (error) {
-        showAlert('register-alert', 'Registration failed. Please try again.');
+        alert('Registration failed. Please try again.');
         console.error('Registration error:', error);
     }
 }
@@ -73,7 +73,7 @@ async function login(email, password)
         console.log('Login API response:', JSON.stringify(data, null, 2));
 
         if (data.error) {
-            showAlert('login-alert', data.error);
+            alert('Login error: ' + data.error);
         } else {
             const userData = {
                 id: data.id,
@@ -86,7 +86,7 @@ async function login(email, password)
             window.location.href = 'dashboard.html';
         }
     } catch (error) {
-        showAlert('login-alert', 'Login failed. Please try again.');
+        alert('Login failed. Please try again.');
         console.error('Login error:', error);
     }
 }
@@ -115,16 +115,16 @@ async function updateUserProfile(profileData)
             {
             const updatedUser = { ...userData, name: profileData.name, email: profileData.email };
             localStorage.setItem('userData', JSON.stringify(updatedUser));
-            showAlert('settings-alert', 'Profile updated successfully!', 'success');
+            alert('Profile updated successfully!');
         } else {
-            showAlert('settings-alert', data.message || 'Failed to update profile');
+            alert('Failed to update profile: ' + (data.message || 'Unknown error'));
         }
     } catch (error) {
         // TO DO: Remove this later
         // For demo purposes, simulate success
         const updatedUser = { ...userData, name: profileData.name, email: profileData.email };
         localStorage.setItem('userData', JSON.stringify(updatedUser));
-        showAlert('settings-alert', 'Profile updated successfully!', 'success');
+        alert('Profile updated successfully!');
         console.log('Update profile error:', error);
     }
 }

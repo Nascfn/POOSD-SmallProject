@@ -56,7 +56,7 @@ function displayContacts(contacts)
 
         const nameDiv = document.createElement('div');
         nameDiv.className = 'contact-name';
-        nameDiv.textContent = contact.name;
+        nameDiv.textContent = `${contact.firstName} ${contact.lastName}`.trim() || 'Unnamed Contact';
         card.appendChild(nameDiv);
 
         if (contact.email){
@@ -71,13 +71,6 @@ function displayContacts(contacts)
             phoneInfo.className = 'contact-info';
             phoneInfo.textContent = `📞 ${contact.phone}`;
             card.appendChild(phoneInfo);
-        }
-
-        if (contact.company) {
-            const companyInfo = document.createElement('div');
-            companyInfo.className = 'contact-info';
-            companyInfo.textContent = `🏢 ${contact.company}`;
-            card.appendChild(companyInfo);
         }
 
         container.appendChild(card);
@@ -123,10 +116,10 @@ async function searchContacts(query)
         } else {
              const contacts = data.results.map(contact => ({
                 id: contact.id,
-                name: `${contact.firstName} ${contact.lastName}`.trim(),
+                firstName: contact.firstName,
+                lastName: contact.lastName,
                 email: contact.email,
-                phone: contact.phone,
-                company: ''
+                phone: contact.phone
             }));
             displayContacts(contacts);
         }

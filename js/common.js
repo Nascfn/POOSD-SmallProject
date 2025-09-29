@@ -2,7 +2,7 @@
 console.log("DEV: common.js script loaded!");
 
 // TO DO: API Configuration
-const API_BASE = '/API';
+const API_BASE = '/LAMPAPI';
 
 // Show alert messages
 function showAlert(containerId, message, type = 'error') 

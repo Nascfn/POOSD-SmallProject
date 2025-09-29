@@ -7,13 +7,15 @@
     <link rel="icon" type="image/jpeg" href="media/logo-v1.png">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/contact-detail.css">
-    <link rel="stylesheet" href="css/action.css">
 </head>
 <body>
     <div class="container">
         <a href="dashboard.html" class="btn back-btn">← Back</a>
         <div class="contact-detail">
-            <h2 class="form-title" id="contact-name">Contact Name</h2>
+            <div class="detail-field">
+                <div class="field-label">Contact Name</div>
+                <div class="field-value" id="contact-name">Name</div>
+            </div>
             <div class="detail-field">
                 <div class="field-label">Email</div>
                 <div class="field-value" id="detail-email">email@example.com</div>
@@ -21,10 +23,6 @@
             <div class="detail-field">
                 <div class="field-label">Phone</div>
                 <div class="field-value" id="detail-phone">(555) 123-4567</div>
-            </div>
-            <div class="detail-field">
-                <div class="field-label">Company</div>
-                <div class="field-value" id="detail-company">Company Name</div>
             </div>
             <div id="contact-settings" style="text-align: center; margin-top: 2rem;">
                 <button id="edit-contact-btn" class="btn">Edit Contact</button>

@@ -38,10 +38,10 @@ async function loadContacts()
         }
         const contacts = data.results.map(contact => ({
             id: contact.id,
-            name: `${contact.firstName} ${contact.lastName}`.trim(),
+            firstName: contact.firstName,
+            lastName: contact.lastName,
             email: contact.email,
-            phone: contact.phone,
-            company: '' // The SearchContact API doesn't return 'company'
+            phone: contact.phone
         }));
         localStorage.setItem('contacts', JSON.stringify(contacts));
         return contacts;
@@ -56,17 +56,13 @@ async function addContact(contactData)
 {
     const userData = JSON.parse(localStorage.getItem('userData') || '{}');
     if (!userData.id) {
-        showAlert('contact-alert', 'You must be logged in to add a contact.');
+        alert('You must be logged in to add a contact.');
         return;
     }
 
-    const nameParts = contactData.name.split(' ');
-    const firstName = nameParts[0];
-    const lastName = nameParts.slice(1).join(' ');
-
     const payload = {
-        firstName: firstName,
-        lastName: lastName,
+        firstName: contactData.firstName,
+        lastName: contactData.lastName,
         phone: contactData.phone,
         email: contactData.email,
         userId: userData.id
@@ -89,9 +85,9 @@ async function addContact(contactData)
         console.log('Add contact API response:', JSON.stringify(data, null, 2));
 
         if (data.error) {
-            showAlert('contact-alert', `Failed to add contact: ${data.error}`);
+            alert('Failed to add contact: ' + data.error);
         } else {
-            showAlert('contact-alert', 'Contact added successfully!', 'success');
+            alert('Contact added successfully!');
             clearForm('contact-form');
             setTimeout(() =>
             {
@@ -100,7 +96,7 @@ async function addContact(contactData)
         }
 
     } catch (error) {
-        showAlert('contact-alert', 'Failed to add contact. Please try again.');
+        alert('Failed to add contact. Please try again.');
         console.error('Add contact error:', error);
     }
 }

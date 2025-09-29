@@ -36,11 +36,9 @@ function loadContactDetails(contactId) {
     // Now, populate the page if we found a contact
     if (contact) {
         // This is the corrected line
-        document.getElementById('contact-name').textContent = contact.name; 
-        
+        document.getElementById('contact-name').textContent = `${contact.firstName} ${contact.lastName}`.trim() || 'Unnamed Contact';         
         document.getElementById('detail-email').textContent = contact.email;
-        document.getElementById('detail-phone').textContent = contact.phone;
-        document.getElementById('detail-company').textContent = contact.company || 'N/A';
+        document.getElementById('detail-phone').textContent = contact.phone || 'N/A';
     } else {
         // If contact is not found, it might be an outdated cache or direct navigation
         alert("Contact not found. Returning to the dashboard to refresh.");

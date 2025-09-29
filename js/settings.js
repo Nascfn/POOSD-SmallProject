@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function()
         e.preventDefault();
         const profileData = {
             name: document.getElementById('settings-name').value,
-            email: document.getElementById('settings-email').value,
+            username: document.getElementById('settings-username').value,
             currentPassword: document.getElementById('settings-current-password').value,
             newPassword: document.getElementById('settings-new-password').value
         };

@@ -67,16 +67,26 @@ body
 }
 
 .btn-secondary {
-    background: transparent;
-    border: 2px solid #FF7E5F;
-    color: #FF7E5F;
-    box-shadow: none;
+    background: linear-gradient(135deg, #FF7E5F 0%, #FEB47B 100%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 126, 95, 0.1);
-    color: #FF7E5F;
-    box-shadow: none;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 25px rgba(255, 126, 95, 0.4);
 }
 
 .btn-demo {
